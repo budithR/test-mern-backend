@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const forgetPasswordSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true},
     createdAt: { type: Date, default: Date.now },
     pin: { type: Number, required: true}
 });
