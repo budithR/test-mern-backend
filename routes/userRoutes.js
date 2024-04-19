@@ -35,13 +35,15 @@ router.post('/login', async (req, res) => {
       const user = await User.findOne({ email });
       
       if (!user) {
-        return res.status(401).send('Invalid email');
+        return res.status(401).json( {message: 'Invalid email',
+                                      status: 401});
       }
   
       const isPasswordValid = await bcrypt.compare(password, user.password);
   
       if (!isPasswordValid) {
-        return res.status(401).send('Invalid password');
+        return res.status(401).json({message: 'Invalid password',
+                                    status: 401});
       }
   
       // Password is valid, you can now generate a token or perform other actions
